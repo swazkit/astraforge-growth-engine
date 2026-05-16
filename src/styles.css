@@ -171,6 +171,42 @@
   .animate-spin-rev { animation: spin-rev 26s linear infinite; }
   @keyframes marquee { from { transform: translateX(0);} to { transform: translateX(-50%);} }
   .animate-marquee { animation: marquee 30s linear infinite; }
+
+  @keyframes pulse-slow { 0%,100% { opacity:.55; transform: scale(1);} 50% { opacity:1; transform: scale(1.04);} }
+  .animate-pulse-slow { animation: pulse-slow 4.5s ease-in-out infinite; }
+
+  @keyframes scan {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(620px); opacity: 0; }
+  }
+  .animate-scan { animation: scan 6s ease-in-out infinite; }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 50%; }
+    100% { background-position: -200% 50%; }
+  }
+  .animate-shimmer { animation: shimmer 5s linear infinite; }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-up { animation: fade-up .8s ease-out both; }
+
+  @keyframes grow-x {
+    0% { transform: scaleX(0); }
+    60% { transform: scaleX(1); }
+    100% { transform: scaleX(1); }
+  }
+  .animate-grow-x { animation: grow-x 1.4s ease-out .4s both; }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .animate-float { animation: float 5s ease-in-out infinite; }
+
   .grid-bg {
     background-image:
       radial-gradient(ellipse at top, rgba(57,255,20,0.08), transparent 60%),
