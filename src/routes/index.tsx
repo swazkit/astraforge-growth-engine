@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
+import heroVisual from "@/assets/hero-visual.png";
 import {
   ArrowRight,
   ArrowUpRight,
