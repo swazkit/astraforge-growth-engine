@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState } from "react";
-import heroVisual from "@/assets/hero-visual.png";
+import { AICoreAnimation } from "@/components/AICoreAnimation";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -167,16 +167,14 @@ function Hero() {
           <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_center,rgba(57,255,20,0.28),transparent_60%)] blur-3xl" />
           <div className="pointer-events-none absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(57,255,20,0.18),transparent_70%)] animate-pulse-slow" />
 
-          <img
-            src={heroVisual}
-            alt="Neon green crystalline AI core representing Astraforge's intelligent systems"
-            width={1024}
-            height={1024}
-            className="relative z-10 h-[440px] w-[440px] object-contain animate-float drop-shadow-[0_0_60px_rgba(57,255,20,0.45)] transition-transform duration-300 ease-out will-change-transform"
+          <div
+            className="relative z-10 h-[440px] w-[440px] flex items-center justify-center animate-float transition-transform duration-300 ease-out will-change-transform"
             style={{
               transform: `translate3d(${parallax.x}px, ${parallax.y}px, 0)`,
             }}
-          />
+          >
+            <AICoreAnimation />
+          </div>
         </div>
       </div>
     </section>
