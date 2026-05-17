@@ -93,7 +93,7 @@ function Hero() {
     <section className="relative overflow-hidden grid-bg">
       <div className="pointer-events-none absolute -top-32 -left-32 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(57,255,20,0.18),transparent_70%)] blur-3xl animate-pulse-slow" />
       <div className="pointer-events-none absolute top-1/3 right-0 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle,rgba(34,197,94,0.12),transparent_70%)] blur-3xl" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#39FF14]/70 to-transparent animate-scan" />
+      
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-24 md:grid-cols-2 md:py-32">
         <div className="animate-fade-up">
@@ -145,58 +145,25 @@ function Hero() {
           </div>
         </div>
 
-        <div className="relative mx-auto flex h-[480px] w-full max-w-[520px] items-center justify-center animate-fade-up [animation-delay:120ms]">
-          <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_center,rgba(57,255,20,0.22),transparent_60%)] blur-2xl" />
+        <div
+          ref={visualRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          className="relative mx-auto flex h-[480px] w-full max-w-[520px] items-center justify-center animate-fade-up [animation-delay:120ms]"
+        >
+          <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_center,rgba(57,255,20,0.28),transparent_60%)] blur-3xl" />
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(57,255,20,0.18),transparent_70%)] animate-pulse-slow" />
 
-          <div className="pointer-events-none absolute inset-0">
-            <span className="absolute left-1/2 top-0 h-4 w-px -translate-x-1/2 bg-[#39FF14]/50" />
-            <span className="absolute left-1/2 bottom-0 h-4 w-px -translate-x-1/2 bg-[#39FF14]/50" />
-            <span className="absolute top-1/2 left-0 h-px w-4 -translate-y-1/2 bg-[#39FF14]/50" />
-            <span className="absolute top-1/2 right-0 h-px w-4 -translate-y-1/2 bg-[#39FF14]/50" />
-            <span className="absolute top-2 left-2 h-3 w-3 border-l border-t border-[#39FF14]/60" />
-            <span className="absolute top-2 right-2 h-3 w-3 border-r border-t border-[#39FF14]/60" />
-            <span className="absolute bottom-2 left-2 h-3 w-3 border-l border-b border-[#39FF14]/60" />
-            <span className="absolute bottom-2 right-2 h-3 w-3 border-r border-b border-[#39FF14]/60" />
-          </div>
-
-          <div className="relative h-[380px] w-[380px]">
-            <div className="absolute inset-0 animate-spin-slow rounded-full border border-dashed border-[#39FF14]/40" />
-            <div className="absolute inset-6 animate-spin-rev rounded-full border-2 border-[#39FF14]/60 shadow-[inset_0_0_40px_rgba(57,255,20,0.4)]" />
-            <div className="absolute inset-14 animate-spin-slow rounded-full border border-[#39FF14]/30" />
-            <div className="absolute inset-20 animate-spin-rev rounded-full border-2 border-[#39FF14]/50 shadow-[0_0_30px_rgba(57,255,20,0.5)]" />
-            <div className="absolute inset-28 rounded-full border border-[#39FF14]/30 bg-[radial-gradient(circle,rgba(57,255,20,0.28),transparent_70%)]" />
-
-            <div className="absolute inset-0 animate-spin-slow">
-              <span className="absolute left-1/2 top-0 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon shadow-neon" />
-            </div>
-            <div className="absolute inset-6 animate-spin-rev">
-              <span className="absolute right-0 top-1/2 h-2 w-2 -translate-y-1/2 translate-x-1/2 rounded-full bg-[#7CFF6A] shadow-[0_0_12px_rgba(124,255,106,0.8)]" />
-            </div>
-            <div className="absolute inset-14 animate-spin-slow">
-              <span className="absolute left-0 top-1/2 h-1.5 w-1.5 -translate-y-1/2 -translate-x-1/2 rounded-full bg-emerald-300" />
-            </div>
-
-            <div className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-neon shadow-neon" />
-            <div className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#39FF14]/40 animate-pulse-slow" />
-          </div>
-
-          <div className="absolute -top-2 left-2 hidden md:block rounded-md border border-white/10 bg-black/60 px-3 py-1.5 backdrop-blur-md animate-float">
-            <p className="font-mono-hud text-[10px] tracking-[0.25em] text-zinc-300">
-              <span className="text-neon">●</span> NODE_01 · ONLINE
-            </p>
-          </div>
-          <div className="absolute bottom-6 right-0 hidden md:block rounded-md border border-white/10 bg-black/60 px-3 py-1.5 backdrop-blur-md animate-float [animation-delay:600ms]">
-            <p className="font-mono-hud text-[10px] tracking-[0.25em] text-zinc-300">
-              LLM_CORE · <span className="text-neon">v4.2</span>
-            </p>
-          </div>
-          <div className="absolute top-16 -right-2 hidden md:block rounded-md border border-[#39FF14]/30 bg-[#39FF14]/[0.06] px-3 py-1.5 backdrop-blur-md animate-float [animation-delay:1200ms]">
-            <p className="font-mono-hud text-[10px] tracking-[0.25em] text-neon">
-              99.98% UPTIME
-            </p>
-          </div>
-
-          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 [background:linear-gradient(transparent,rgba(57,255,20,0.08)),repeating-linear-gradient(90deg,rgba(57,255,20,0.15)_0_1px,transparent_1px_24px)] [mask-image:linear-gradient(to_top,black,transparent)]" />
+          <img
+            src={heroVisual}
+            alt="Neon green crystalline AI core representing Astraforge's intelligent systems"
+            width={1024}
+            height={1024}
+            className="relative z-10 h-[440px] w-[440px] object-contain animate-float drop-shadow-[0_0_60px_rgba(57,255,20,0.45)] transition-transform duration-300 ease-out will-change-transform"
+            style={{
+              transform: `translate3d(${parallax.x}px, ${parallax.y}px, 0)`,
+            }}
+          />
         </div>
       </div>
     </section>
