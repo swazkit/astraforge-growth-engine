@@ -89,6 +89,19 @@ function Nav() {
 }
 
 function Hero() {
+  const visualRef = useRef<HTMLDivElement>(null);
+  const [parallax, setParallax] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = visualRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    setParallax({ x: px * 18, y: py * 18 });
+  };
+  const handleMouseLeave = () => setParallax({ x: 0, y: 0 });
+
   return (
     <section className="relative overflow-hidden grid-bg">
       <div className="pointer-events-none absolute -top-32 -left-32 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(57,255,20,0.18),transparent_70%)] blur-3xl animate-pulse-slow" />
