@@ -65,7 +65,7 @@ function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#050505]/80 backdrop-blur-md">
+    <header className={`sticky top-0 z-50 border-b border-white/[0.06] transition-colors duration-300 ${menuOpen ? "bg-[#050505]" : "bg-[#050505]/80 backdrop-blur-md"}`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="#" className="text-lg font-extrabold tracking-[0.2em] text-white">
           ASTRAFORGE
@@ -99,7 +99,7 @@ function Nav() {
 
       {/* Mobile Drawer Overlay */}
       {menuOpen && (
-        <div className="fixed inset-x-0 top-[69px] bottom-0 z-40 flex flex-col bg-[#050505] md:hidden border-t border-white/[0.06] shadow-[0_10px_50px_rgba(0,0,0,0.8)]">
+        <div className="fixed inset-x-0 top-[69px] bottom-0 z-[100] flex flex-col bg-[#050505] md:hidden border-t border-white/[0.06] shadow-[0_10px_50px_rgba(0,0,0,0.8)]">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(57,255,20,0.06),transparent_60%)]" />
           <nav className="relative z-10 flex flex-col items-center gap-8 py-16 px-6">
             {["Services", "Work", "Process", "Contact"].map((l) => (
