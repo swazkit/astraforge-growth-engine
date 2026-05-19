@@ -99,7 +99,7 @@ function Nav() {
 
       {/* Mobile Drawer Overlay */}
       {menuOpen && (
-        <div className="fixed inset-x-0 top-[69px] bottom-0 z-40 flex flex-col bg-[#050505]/75 backdrop-blur-xl md:hidden border-t border-white/[0.06] shadow-[0_10px_50px_rgba(0,0,0,0.8)]">
+        <div className="fixed inset-x-0 top-[69px] bottom-0 z-40 flex flex-col bg-[#050505] md:hidden border-t border-white/[0.06] shadow-[0_10px_50px_rgba(0,0,0,0.8)]">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(57,255,20,0.06),transparent_60%)]" />
           <nav className="relative z-10 flex flex-col items-center gap-8 py-16 px-6">
             {["Services", "Work", "Process", "Contact"].map((l) => (
