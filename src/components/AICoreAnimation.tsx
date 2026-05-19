@@ -488,7 +488,7 @@ export function AICoreAnimation() {
     <div
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative z-10 h-[440px] w-[440px] max-w-full drop-shadow-[0_0_55px_rgba(57,255,20,0.3)] select-none cursor-crosshair overflow-hidden"
+      className="relative z-10 h-[280px] w-[280px] xs:h-[360px] xs:w-[360px] sm:h-[440px] sm:w-[440px] max-w-full drop-shadow-[0_0_55px_rgba(57,255,20,0.3)] select-none cursor-crosshair overflow-hidden"
     >
       <canvas
         ref={canvasRef}

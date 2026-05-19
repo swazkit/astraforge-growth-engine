@@ -17,6 +17,8 @@ import {
   Rocket,
   MapPin,
   Mail,
+  Menu,
+  X,
 } from "lucide-react";
 
 function HudCorners() {
@@ -60,6 +62,8 @@ function GhostButton({ children }: { children: React.ReactNode }) {
 }
 
 function Nav() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#050505]/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
@@ -77,10 +81,45 @@ function Nav() {
             </a>
           ))}
         </nav>
-        <button className="rounded-md bg-neon px-4 py-2 text-sm font-semibold text-black transition-all duration-300 hover:brightness-110 hover:shadow-neon">
-          Book a Call
+        <div className="hidden md:block">
+          <button className="rounded-md bg-neon px-4 py-2 text-sm font-semibold text-black transition-all duration-300 hover:brightness-110 hover:shadow-neon">
+            Book a Call
+          </button>
+        </div>
+
+        {/* Mobile menu trigger */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="flex h-9 w-9 items-center justify-center rounded-md border border-white/10 bg-white/[0.02] text-white transition hover:border-[#39FF14]/50 hover:text-[#39FF14] md:hidden"
+          aria-label="Toggle Menu"
+        >
+          {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
+
+      {/* Mobile Drawer Overlay */}
+      {menuOpen && (
+        <div className="fixed inset-x-0 top-[69px] bottom-0 z-40 flex flex-col bg-[#050505]/95 backdrop-blur-lg md:hidden border-t border-white/[0.06]">
+          <nav className="flex flex-col items-center gap-8 py-16 px-6">
+            {["Services", "Work", "Process", "Contact"].map((l) => (
+              <a
+                key={l}
+                href={`#${l.toLowerCase()}`}
+                onClick={() => setMenuOpen(false)}
+                className="text-xl font-semibold tracking-wider text-zinc-300 transition hover:text-[#39FF14]"
+              >
+                {l}
+              </a>
+            ))}
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="mt-6 w-full max-w-xs rounded-md bg-neon py-4 text-center text-sm font-bold tracking-[0.25em] text-black transition-all duration-300 hover:brightness-110 hover:shadow-neon"
+            >
+              BOOK A CALL
+            </button>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
@@ -158,13 +197,13 @@ function Hero() {
           ref={visualRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="relative mx-auto flex h-[480px] w-full max-w-[520px] items-center justify-center animate-fade-up [animation-delay:120ms]"
+          className="relative mx-auto flex h-[320px] xs:h-[400px] sm:h-[480px] w-full max-w-[520px] items-center justify-center animate-fade-up [animation-delay:120ms]"
         >
           <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_center,rgba(57,255,20,0.28),transparent_60%)] blur-3xl" />
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(57,255,20,0.18),transparent_70%)] animate-pulse-slow" />
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[220px] w-[220px] xs:h-[280px] xs:w-[280px] sm:h-[320px] sm:w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(57,255,20,0.18),transparent_70%)] animate-pulse-slow" />
 
           <div
-            className="relative z-10 h-[440px] w-[440px] flex items-center justify-center animate-float transition-transform duration-300 ease-out will-change-transform"
+            className="relative z-10 h-[280px] w-[280px] xs:h-[360px] xs:w-[360px] sm:h-[440px] sm:w-[440px] flex items-center justify-center animate-float transition-transform duration-300 ease-out will-change-transform"
             style={{
               transform: `translate3d(${parallax.x}px, ${parallax.y}px, 0)`,
             }}
@@ -365,7 +404,7 @@ function Contact() {
   return (
     <section id="contact" className="border-t border-white/[0.05]">
       <div className="mx-auto max-w-7xl px-6 py-24">
-        <div className="relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-br from-white/[0.04] to-transparent p-10 md:p-14">
+        <div className="relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-br from-white/[0.04] to-transparent p-6 sm:p-10 md:p-14">
           <HudCorners />
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
