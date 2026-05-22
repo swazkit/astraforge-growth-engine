@@ -78,7 +78,7 @@ function Nav() {
           {["Services", "Work", "Process", "Contact"].map((l) => (
             <a
               key={l}
-              href={`#${l.toLowerCase()}`}
+              href={l === "Process" ? "/process" : `#${l.toLowerCase()}`}
               className="text-sm text-zinc-400 transition hover:text-white"
             >
               {l}
@@ -109,7 +109,7 @@ function Nav() {
             {["Services", "Work", "Process", "Contact"].map((l) => (
               <a
                 key={l}
-                href={`#${l.toLowerCase()}`}
+                href={l === "Process" ? "/process" : `#${l.toLowerCase()}`}
                 onClick={() => setMenuOpen(false)}
                 className="text-xl font-semibold tracking-wider text-zinc-300 transition hover:text-[#39FF14]"
               >
@@ -262,7 +262,7 @@ function Capabilities() {
             </p>
           </div>
           <a
-            href="#process"
+            href="/process"
             className="group inline-flex items-center gap-2 font-mono-hud text-xs tracking-[0.25em] text-neon"
           >
             SEE OUR PROCESS
@@ -283,7 +283,7 @@ function Capabilities() {
               <h3 className="mt-5 text-lg font-semibold text-white">{title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-zinc-400">{desc}</p>
               <a
-                href="#"
+                href="/process"
                 className="mt-6 inline-flex items-center gap-1 font-mono-hud text-[11px] tracking-[0.25em] text-neon transition-all group-hover:gap-2"
               >
                 LEARN MORE <ArrowRight className="h-3 w-3" />
