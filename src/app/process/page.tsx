@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Link from "next/link";
 import {
   ArrowLeft,
   ArrowRight,
@@ -102,6 +103,7 @@ function ScrollReveal({
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const currentRef = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -111,13 +113,13 @@ function ScrollReveal({
       { threshold: 0.15 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -337,19 +339,19 @@ export default function ProcessPage() {
       {/* Top Navigation */}
       <header className={`sticky top-0 z-50 border-b border-white/[0.06] transition-colors duration-300 ${menuOpen ? "bg-[#050505]" : "bg-[#050505]/80 backdrop-blur-md"}`}>
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <a href="/" className="text-lg font-extrabold tracking-[0.2em] text-white flex items-center gap-2">
+          <Link href="/" className="text-lg font-extrabold tracking-[0.2em] text-white flex items-center gap-2">
             <span className="text-neon">■</span> ASTRAFORGE
-          </a>
+          </Link>
           <nav className="hidden items-center gap-10 md:flex">
-            <a href="/#services" className="text-sm text-zinc-400 transition hover:text-white">Services</a>
-            <a href="/#work" className="text-sm text-zinc-400 transition hover:text-white">Work</a>
-            <a href="/process" className="text-sm text-white font-semibold">Process</a>
-            <a href="/#contact" className="text-sm text-zinc-400 transition hover:text-white">Contact</a>
+            <Link href="/#services" className="text-sm text-zinc-400 transition hover:text-white">Services</Link>
+            <Link href="/#work" className="text-sm text-zinc-400 transition hover:text-white">Work</Link>
+            <Link href="/process" className="text-sm text-white font-semibold">Process</Link>
+            <Link href="/#contact" className="text-sm text-zinc-400 transition hover:text-white">Contact</Link>
           </nav>
           <div className="hidden md:block">
-            <a href="/#contact" className="rounded-md bg-neon px-4 py-2 text-sm font-semibold text-black transition-all duration-300 hover:brightness-110 hover:shadow-neon">
+            <Link href="/#contact" className="rounded-md bg-neon px-4 py-2 text-sm font-semibold text-black transition-all duration-300 hover:brightness-110 hover:shadow-neon">
               Book a Call
-            </a>
+            </Link>
           </div>
 
           {/* Mobile menu trigger */}
@@ -367,17 +369,17 @@ export default function ProcessPage() {
           <div className="fixed inset-x-0 top-[69px] bottom-0 z-[100] flex flex-col bg-[#050505] md:hidden border-t border-white/[0.06] shadow-[0_10px_50px_rgba(0,0,0,0.8)] animate-fade-in-up">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(57,255,20,0.06),transparent_60%)]" />
             <nav className="relative z-10 flex flex-col items-center gap-8 py-16 px-6">
-              <a href="/#services" onClick={() => setMenuOpen(false)} className="text-xl font-semibold tracking-wider text-zinc-300 transition hover:text-[#39FF14]">Services</a>
-              <a href="/#work" onClick={() => setMenuOpen(false)} className="text-xl font-semibold tracking-wider text-zinc-300 transition hover:text-[#39FF14]">Work</a>
-              <a href="/process" onClick={() => setMenuOpen(false)} className="text-xl font-semibold tracking-wider text-[#39FF14]">Process</a>
-              <a href="/#contact" onClick={() => setMenuOpen(false)} className="text-xl font-semibold tracking-wider text-zinc-300 transition hover:text-[#39FF14]">Contact</a>
-              <a
+              <Link href="/#services" onClick={() => setMenuOpen(false)} className="text-xl font-semibold tracking-wider text-zinc-300 transition hover:text-[#39FF14]">Services</Link>
+              <Link href="/#work" onClick={() => setMenuOpen(false)} className="text-xl font-semibold tracking-wider text-zinc-300 transition hover:text-[#39FF14]">Work</Link>
+              <Link href="/process" onClick={() => setMenuOpen(false)} className="text-xl font-semibold tracking-wider text-[#39FF14]">Process</Link>
+              <Link href="/#contact" onClick={() => setMenuOpen(false)} className="text-xl font-semibold tracking-wider text-zinc-300 transition hover:text-[#39FF14]">Contact</Link>
+              <Link
                 href="/#contact"
                 onClick={() => setMenuOpen(false)}
                 className="mt-6 w-full max-w-xs rounded-md bg-neon py-4 text-center text-sm font-bold tracking-[0.25em] text-black transition-all duration-300 hover:brightness-110 hover:shadow-neon"
               >
                 BOOK A CALL
-              </a>
+              </Link>
             </nav>
           </div>
         )}
@@ -406,13 +408,13 @@ export default function ProcessPage() {
             Explore Process Timeline
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </a>
-          <a
+          <Link
             href="/"
             className="group inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.02] px-6 py-3 text-sm font-semibold text-zinc-300 transition hover:bg-white/[0.05] hover:text-white"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
             Back to Home
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -494,19 +496,19 @@ export default function ProcessPage() {
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+              <Link
                 href="/#contact"
                 className="group inline-flex items-center gap-2 rounded-md bg-neon px-8 py-4 text-sm font-semibold text-black transition hover:brightness-110 hover:shadow-neon justify-center"
               >
                 Schedule Architecture Call
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/"
                 className="group inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.02] px-8 py-4 text-sm font-semibold text-zinc-300 transition hover:bg-white/[0.05] hover:text-white justify-center"
               >
                 Return to Homepage
-              </a>
+              </Link>
             </div>
           </ScrollReveal>
         </div>
@@ -517,10 +519,10 @@ export default function ProcessPage() {
         <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-6 font-mono-hud text-[11px] text-zinc-500 tracking-[0.1em]">
           <span>© 2026 ASTRAFORGE. ALL SYSTEMS GO.</span>
           <div className="flex gap-8">
-            <a href="/#services" className="hover:text-[#39FF14] transition">SERVICES</a>
-            <a href="/#work" className="hover:text-[#39FF14] transition">WORK</a>
-            <a href="/process" className="hover:text-[#39FF14] transition">PROCESS</a>
-            <a href="/#contact" className="hover:text-[#39FF14] transition">CONTACT</a>
+            <Link href="/#services" className="hover:text-[#39FF14] transition">SERVICES</Link>
+            <Link href="/#work" className="hover:text-[#39FF14] transition">WORK</Link>
+            <Link href="/process" className="hover:text-[#39FF14] transition">PROCESS</Link>
+            <Link href="/#contact" className="hover:text-[#39FF14] transition">CONTACT</Link>
           </div>
         </div>
       </footer>
