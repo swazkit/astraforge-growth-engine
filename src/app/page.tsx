@@ -19,6 +19,10 @@ import {
   Mail,
   Menu,
   X,
+  ChevronDown,
+  MessageCircle,
+  Star,
+  Send,
 } from "lucide-react";
 
 function HudCorners() {
@@ -292,21 +296,200 @@ function Capabilities() {
   );
 }
 
+interface ServiceItem {
+  Icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  desc: string;
+  bullets: string[];
+}
+
+function ServiceAccordionItem({
+  item,
+  isOpen,
+  onToggle,
+}: {
+  item: ServiceItem;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  const { Icon, label, desc, bullets } = item;
+
+  return (
+    <div
+      className={`group rounded-xl transition-all duration-300 border ${
+        isOpen
+          ? "border-[#39FF14]/15 bg-gradient-to-b from-[#39FF14]/[0.02] to-[transparent]"
+          : "border-white/[0.04] bg-white/[0.01] hover:border-white/[0.1] hover:bg-white/[0.02]"
+      }`}
+    >
+      <button
+        onClick={onToggle}
+        className="w-full flex items-center justify-between px-5 py-4 text-left focus:outline-none cursor-pointer"
+      >
+        <div className="flex items-center gap-4">
+          <div
+            className={`inline-flex h-10 w-10 items-center justify-center rounded-lg border transition-all duration-300 ${
+              isOpen
+                ? "border-[#39FF14]/25 bg-[#39FF14]/0.08 text-neon"
+                : "border-white/10 bg-white/[0.03] text-zinc-400 group-hover:border-[#39FF14]/20 group-hover:text-neon group-hover:bg-[#39FF14]/5"
+            }`}
+          >
+            <Icon className="h-5 w-5" />
+          </div>
+          <span
+            className={`text-base font-semibold tracking-wide transition-colors duration-300 ${
+              isOpen ? "text-neon" : "text-zinc-200 group-hover:text-white"
+            }`}
+          >
+            {label}
+          </span>
+        </div>
+        <ChevronDown
+          className={`h-5 w-5 text-zinc-500 transition-transform duration-300 ${
+            isOpen ? "rotate-180 text-neon" : "group-hover:text-zinc-300"
+          }`}
+        />
+      </button>
+
+      <div
+        className={`grid transition-all duration-300 ease-in-out ${
+          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="px-5 pb-5 pt-1 border-t border-white/[0.03] mt-1">
+            <p className="text-sm leading-relaxed text-zinc-400 font-normal mb-4">
+              {desc}
+            </p>
+            <ul className="grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
+              {bullets.map((bullet, idx) => (
+                <li key={idx} className="flex items-start gap-2.5 text-xs text-zinc-300">
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-neon" />
+                  <span className="leading-tight">{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Ecosystem() {
+  const [activeItem, setActiveItem] = useState<{ [key: string]: string | null }>({
+    "CORE WORKFLOW AUTOMATIONS": "AI-Driven Customer Support Desk",
+  });
+
+  const handleToggle = (colTitle: string, label: string) => {
+    setActiveItem((prev) => ({
+      ...prev,
+      [colTitle]: prev[colTitle] === label ? null : label,
+    }));
+  };
+
   const core = [
-    { Icon: Headphones, label: "AI Support Desk" },
-    { Icon: PenTool, label: "Content Engine" },
-    { Icon: Cpu, label: "Custom LLM Setup" },
+    {
+      Icon: Headphones,
+      label: "AI-Driven Customer Support Desk",
+      desc: "Deploy autonomous customer support systems that resolve up to 80% of common queries instantly. Integrates with Zendesk, Intercom, and custom CRM platforms.",
+      bullets: [
+        "Instant response times 24/7",
+        "Semantic search on knowledge bases",
+        "Automated ticketing & escalation",
+        "Sentiment analysis & reporting",
+      ],
+    },
+    {
+      Icon: PenTool,
+      label: "Hyper-Personalized Content & Research Assistant",
+      desc: "Accelerate your content production and research pipelines. Build AI agents that scrape deep web sources, extract intelligence, and generate brand-aligned assets.",
+      bullets: [
+        "Real-time market intelligence scraping",
+        "Automated SEO optimization",
+        "Multilingual tone tuning",
+        "Automated citation verification",
+      ],
+    },
+    {
+      Icon: Cpu,
+      label: "Custom Automation Setup",
+      desc: "Connect your entire software stack with custom LLM middleware. Streamline processes between your CRM, marketing channels, and internal databases.",
+      bullets: [
+        "Custom APIs & webhooks",
+        "Vector database design",
+        "Background task processors",
+        "End-to-end security compliance",
+      ],
+    },
   ];
+
   const others = [
-    { Icon: ImageIcon, label: "AI Visual Media" },
-    { Icon: Globe, label: "Web Excellence" },
-    { Icon: Rocket, label: "Growth Automations" },
+    {
+      Icon: ImageIcon,
+      label: "AI-Generated UGC & Marketing Ad Creatives",
+      desc: "Generate hyper-converting image and video assets at scale. Iterate fast on thousands of creative variations tailored to TikTok, Instagram, and YouTube.",
+      bullets: [
+        "Script-to-video generation",
+        "Realistic voice synthesis",
+        "Creative variation A/B tests",
+        "Dynamic copy & thumbnails",
+      ],
+    },
+    {
+      Icon: MessageCircle,
+      label: "Intelligent Website Chatbots",
+      desc: "Convert website visitors into qualified leads. Conversational assistants that guide users, answer technical questions, and book sales calls.",
+      bullets: [
+        "Interactive qualification flows",
+        "Cal.com / Calendly sync",
+        "Floating chat widgets",
+        "Live conversation logs",
+      ],
+    },
+    {
+      Icon: Globe,
+      label: "AI-Powered Websites & \"Website in a Day\"",
+      desc: "Launch modern Next.js/React web applications optimized for speed, design, and search engine visibility. Embedded with interactive AI features.",
+      bullets: [
+        "Stunning custom CSS themes",
+        "Server-Side Rendering (SSR)",
+        "SEO-ready layouts & semantics",
+        "Interactive product demos",
+      ],
+    },
+    {
+      Icon: Star,
+      label: "Automated Review Funnels",
+      desc: "Systematically collect reviews, direct happy customers to Google/Trustpilot, and capture constructive feedback internally before it hits public boards.",
+      bullets: [
+        "SMS & email review campaigns",
+        "Smart routing by rating",
+        "Analytical tracking dashboard",
+        "Shopify & Stripe integration",
+      ],
+    },
+    {
+      Icon: Send,
+      label: "Newsletter & Social Content Engines",
+      desc: "Automate your organic social growth. Auto-generate LinkedIn carousels, Twitter/X threads, and weekly newsletter drafts based on your recent work.",
+      bullets: [
+        "Automated newsletter compiles",
+        "Social post generation",
+        "Image asset synthesis",
+        "Performance tracking & metrics",
+      ],
+    },
+  ];
+
+  const columns = [
+    { title: "CORE WORKFLOW AUTOMATIONS", items: core },
+    { title: "AUTOMATED GROWTH & MEDIA SERVICES", items: others },
   ];
 
   return (
     <section className="border-t border-white/[0.05] bg-[radial-gradient(ellipse_at_center,rgba(34,197,94,0.08),transparent_70%)]">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-[1fr_2fr]">
         <div>
           <h2 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl">
             Advanced
@@ -331,28 +514,22 @@ function Ecosystem() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-          {[
-            { title: "CORE WORKFLOW AUTOMATIONS", items: core },
-            { title: "AUTOMATED GROWTH & MEDIA SERVICES", items: others },
-          ].map((col) => (
-            <div key={col.title}>
-              <p className="font-mono-hud text-[11px] tracking-[0.3em] text-emerald-soft">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
+          {columns.map((col) => (
+            <div key={col.title} className="flex flex-col gap-5">
+              <p className="font-mono-hud text-[11px] tracking-[0.3em] text-emerald-soft mb-2">
                 {col.title}
               </p>
-              <ul className="mt-5 space-y-1">
-                {col.items.map(({ Icon, label }) => (
-                  <li
-                    key={label}
-                    className="group flex items-center justify-between border-b border-white/[0.06] py-4 transition hover:border-[#39FF14]/30"
-                  >
-                    <span className="text-lg font-semibold text-white">{label}</span>
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-[#39FF14]/25 bg-[#39FF14]/[0.06] transition group-hover:bg-[#39FF14]/15">
-                      <Icon className="h-4 w-4 text-neon" />
-                    </span>
-                  </li>
+              <div className="flex flex-col gap-4">
+                {col.items.map((item) => (
+                  <ServiceAccordionItem
+                    key={item.label}
+                    item={item}
+                    isOpen={activeItem[col.title] === item.label}
+                    onToggle={() => handleToggle(col.title, item.label)}
+                  />
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>
