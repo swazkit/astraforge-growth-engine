@@ -220,23 +220,23 @@ function Hero() {
 const capabilities = [
   {
     Icon: Sparkles,
-    title: "AI Strategy",
-    desc: "We identify high-impact opportunities and define a clear roadmap aligned to your business goals.",
+    title: "AI Strategy & Architecture",
+    desc: "We audit your existing business workflows, identify your costliest bottlenecks, and map out a high-impact AI implementation roadmap designed for immediate ROI.",
   },
   {
     Icon: Workflow,
-    title: "Workflow Automation",
-    desc: "We design and build intelligent automations that streamline operations and eliminate manual work.",
+    title: "Intelligent Workflow Automation",
+    desc: "We design, build, and connect custom backend engines that eliminate manual data entry, streamline multi-app communication, and handle your heavy operational lifting 24/7.",
   },
   {
     Icon: Boxes,
-    title: "Product Design",
-    desc: "Human-centred design for AI products that are intuitive, trustworthy and deliver real value.",
+    title: "System Integration & Design",
+    desc: "We bridge the gap between complex AI logic and your team's day-to-day operations. We build clean, intuitive interfaces and data flows that your staff can trust and use effortlessly.",
   },
   {
     Icon: CloudUpload,
-    title: "Scalable Deployment",
-    desc: "Fast, accessible and performant deployments that bring AI experiences to life at scale.",
+    title: "Secure, Scalable Deployment",
+    desc: "We deploy enterprise-grade automations using cloud-infrastructure and secure API pipelines. Your data remains entirely yours—built to scale as your transaction volume grows.",
   },
 ];
 
@@ -333,8 +333,8 @@ function Ecosystem() {
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
           {[
-            { title: "CORE SOLUTIONS", items: core },
-            { title: "HIGH GROWTH", items: others },
+            { title: "CORE WORKFLOW AUTOMATIONS", items: core },
+            { title: "AUTOMATED GROWTH & MEDIA SERVICES", items: others },
           ].map((col) => (
             <div key={col.title}>
               <p className="font-mono-hud text-[11px] tracking-[0.3em] text-emerald-soft">

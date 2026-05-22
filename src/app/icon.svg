@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="facetLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#39FF14" />
+      <stop offset="100%" stop-color="#1B9A0B" />
+    </linearGradient>
+    <linearGradient id="facetRight" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7CFF6A" />
+      <stop offset="100%" stop-color="#0F5404" />
+    </linearGradient>
+    <linearGradient id="neonGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#39FF14" />
+      <stop offset="100%" stop-color="#22C55E" />
+    </linearGradient>
+    
+    <!-- Filter for neon glow effect -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Outer HUD Hexagon Ring -->
+  <polygon points="16,1 29.86,9 29.86,25 16,33 2.14,25 2.14,9" stroke="#39FF14" stroke-width="1" stroke-opacity="0.15" stroke-dasharray="3,3" />
+  
+  <!-- Outer HUD Corner Ticks -->
+  <path d="M 16,3 L 20,5.3" stroke="#39FF14" stroke-width="1.2" stroke-opacity="0.6" />
+  <path d="M 16,3 L 12,5.3" stroke="#39FF14" stroke-width="1.2" stroke-opacity="0.6" />
+  <path d="M 28,10 L 28,15" stroke="#39FF14" stroke-width="1.2" stroke-opacity="0.6" />
+  <path d="M 4,10 L 4,15" stroke="#39FF14" stroke-width="1.2" stroke-opacity="0.6" />
+  
+  <!-- The Stylized Geometric A-Star Symbol -->
+  <!-- Left Side of the 'A' Delta Wing -->
+  <path d="M 16,4 L 16,21 L 6,25 Z" fill="url(#facetLeft)" />
+  
+  <!-- Right Side of the 'A' Delta Wing -->
+  <path d="M 16,4 L 26,25 L 16,21 Z" fill="url(#facetRight)" />
+  
+  <!-- Base / Underside of 'A' (creates 3D volume and shadow) -->
+  <path d="M 6,25 L 16,21 L 26,25 L 16,29 Z" fill="#050505" stroke="#39FF14" stroke-width="1" />
+  
+  <!-- Glowing central node (Astra core) -->
+  <circle cx="16" cy="21" r="2" fill="#FFFFFF" filter="url(#glow)" />
+  
+  <!-- Highlight Lines -->
+  <line x1="16" y1="4" x2="16" y2="21" stroke="#FFFFFF" stroke-width="0.8" stroke-linecap="round" opacity="0.8" />
+  
+  <!-- Small tech-dot indicators -->
+  <circle cx="16" cy="11" r="0.75" fill="#FFFFFF" opacity="0.9" />
+</svg>
